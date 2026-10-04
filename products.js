@@ -72,7 +72,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "wind up solar emergency radio FM DAB",
-    asin: null,
+    asin: "B0FBR82LMV", // ROCAM FM/AM wind-up solar radio
   },
   {
     id: "batteries",
