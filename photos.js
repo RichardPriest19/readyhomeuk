@@ -40,6 +40,13 @@ const PHOTOS = {
   watertreat: { src: "https://images.unsplash.com/photo-1599490255484-e08a364b4975", by: "Manny Moreno", link: "https://unsplash.com/@mannydream" },
   fire: { src: "https://images.unsplash.com/photo-1592838754746-4af9f09f526f", by: "Ploegerson", link: "https://unsplash.com/@boombasti" },
   floodbarrier: { src: "https://images.unsplash.com/photo-1745680636997-dca47973113d", by: "Donna Brown", link: "https://unsplash.com/@ellekay16" },
+  lantern: { src: "https://images.unsplash.com/photo-1701003115218-70191645c0b7", by: "Se. Tsuchiya", link: "https://unsplash.com/@s_tsuchiya" },
+  warmth: { src: "https://images.unsplash.com/photo-1602891867080-1d56348202a3", by: "Amin Hasani", link: "https://unsplash.com/@aminhasani" },
+  flask: { src: "https://images.unsplash.com/photo-1591345299642-13726d9c80c1", by: "Chandan Chaurasia", link: "https://unsplash.com/@chaurasia" },
+  masks: { src: "https://images.unsplash.com/photo-1614599467531-08fe5ee6cfce", by: "Dennis Rochel", link: "https://unsplash.com/@dennisrochel" },
+  fan: { src: "https://images.unsplash.com/photo-1665298455913-dd43714f5ad1", by: "Zesan H.", link: "https://unsplash.com/@arianzesan" },
+  games: { src: "https://images.unsplash.com/photo-1660807304251-9e2012336d19", by: "Yael Hofnung", link: "https://unsplash.com/@yayosh" },
+  stopcock: { src: "https://images.unsplash.com/photo-1581375922343-ac6b40caf5e3", by: "Greg Jewett", link: "https://unsplash.com/@jewettg" },
 };
 
 function photo(key, w = 800, h = 600) {

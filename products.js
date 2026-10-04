@@ -11,7 +11,7 @@ const CATEGORIES = [
   { id: "comms", label: "Staying in touch" },
   { id: "water", label: "Water & food" },
   { id: "health", label: "First aid & hygiene" },
-  { id: "family", label: "Babies & pets" },
+  { id: "family", label: "Family & pets" },
   { id: "safety", label: "Home safety" },
   { id: "car", label: "Car & grab bag" },
 ];
@@ -42,6 +42,42 @@ const PRODUCTS = [
     buyLabel: "Wind-up torch on Amazon UK",
     extraBuys: [
       { label: "Head torch on Amazon UK", asin: "B0D3VDXB19" }, // Blukar rechargeable head torch, 2 pack
+    ],
+  },
+  {
+    id: "lantern",
+    name: "Rechargeable LED lantern",
+    category: "power",
+    official: false,
+    summary: "Lights a whole room, not just a path. Far safer than candles.",
+    why: "A torch is good for moving around, but a lantern lights a room so you can cook, read and look after children in a power cut. Candles cause house fires every year, especially during power cuts, so an LED lantern is the safer choice.",
+    lookFor: [
+      "Rechargeable, with a long runtime on a low setting",
+      "A warm light setting is easier on the eyes in the evening",
+      "Can also charge a phone, as a bonus",
+    ],
+    qty: () => "1 per room you'll use in the evening",
+    query: "LED camping lantern rechargeable",
+    asin: "B09XXQC2K3", // Blukar rechargeable LED lantern, 2000 lumens
+  },
+  {
+    id: "warmth",
+    name: "Hand warmers and sleeping bags",
+    category: "power",
+    official: false,
+    summary: "Most central heating stops in a power cut. Stay warm without it.",
+    why: "Gas boilers need electricity to run, so most homes lose their heating in a power cut. In winter, a warm sleeping bag for each person and disposable hand warmers keep you comfortable through a cold night. Older people and young children feel the cold fastest.",
+    lookFor: [
+      "A 3-season or warmer sleeping bag for each adult and child",
+      "Air-activated hand warmers last up to 10 hours each",
+      "Never use hand warmers on babies, and don't put them directly on skin",
+    ],
+    qty: (h) => `${plural(Math.max(1, h.adults + h.children), "sleeping bag", "sleeping bags")}, plus 1 box of 40 pairs of hand warmers`,
+    query: "hand warmers disposable",
+    asin: "B00FQLL0IO", // HotHands hand warmers, 40 pairs
+    buyLabel: "Hand warmers on Amazon UK",
+    extraBuys: [
+      { label: "Sleeping bag on Amazon UK", asin: "B077XQDZW4" }, // MalloMe 3-4 season sleeping bag
     ],
   },
   {
@@ -265,6 +301,41 @@ const PRODUCTS = [
     asin: "B0BCJGP6SR", // Lunderg toilet liners with absorbent pads, 20 pack
   },
   {
+    id: "masks",
+    name: "FFP2 dust masks",
+    category: "health",
+    official: false,
+    summary: "Protect your lungs from smoke, dust and mould, and slow the spread of illness.",
+    why: "FFP2 masks filter at least 94% of airborne particles. They're useful for smoke from nearby fires, dust and mould during flood clean-up, and for stopping illness spreading through the household during an outbreak.",
+    lookFor: [
+      "FFP2 rating and UK or CE certification",
+      "Individually wrapped, so they stay clean in storage",
+      "Not suitable for children under 3",
+    ],
+    qty: (h) => {
+      const n = (h.adults + h.children) * 3;
+      return `${n} masks for 3 days (${Math.ceil(n / 20)} × 20-pack)`;
+    },
+    query: "FFP2 masks UK certified",
+    asin: "B0F93SXDJF", // FFP2 masks, UK certified, 20 pack
+  },
+  {
+    id: "fan",
+    name: "Rechargeable fan",
+    category: "health",
+    official: false,
+    summary: "Keeps you cool in a heatwave, even when the power is off.",
+    why: "Heatwaves are a growing risk in the UK and are hardest on older people, babies and anyone with a health condition. A rechargeable fan with a large battery runs all night, so it still works if the power goes off when it's hottest.",
+    lookFor: [
+      "A big battery (10,000 mAh or more) for a full night",
+      "USB-C charging, so it works from your power bank",
+      "Quiet enough to sleep with",
+    ],
+    qty: () => "1 per household, plus 1 for anyone vulnerable to heat",
+    query: "rechargeable battery desk fan",
+    asin: "B0DNM5H1KP", // Warmco D3 rechargeable desk fan, 10000mAh
+  },
+  {
     id: "water",
     name: "Bottled water",
     category: "water",
@@ -327,6 +398,22 @@ const PRODUCTS = [
     extraBuys: [
       { label: "LifeStraw filter on Amazon UK", asin: "B07C56LR6N" }, // LifeStraw personal water filter
     ],
+  },
+  {
+    id: "flask",
+    name: "Vacuum flask",
+    category: "water",
+    official: false,
+    summary: "Fill it with boiling water when a power cut is forecast, and you'll have hot drinks for a day.",
+    why: "A good vacuum flask keeps water hot for around 24 hours. When a storm or planned power cut is on the way, fill it from the kettle. You'll have hot drinks, instant soup or porridge without any power.",
+    lookFor: [
+      "Stainless steel, double-walled, at least 1 litre",
+      "A pouring stopper that doesn't need to be unscrewed",
+      "Warm it with hot water first, then refill with boiling water",
+    ],
+    qty: (h) => `${Math.ceil(people(h) / 2)} × 1-litre flask`,
+    query: "vacuum flask 1 litre",
+    asin: "B000TAOWC8", // THERMOcafe by Thermos 1L stainless steel flask
   },
   {
     id: "food",
@@ -431,6 +518,26 @@ const PRODUCTS = [
     showWhen: (h) => h.pets > 0,
   },
   {
+    id: "games",
+    name: "Card games for all ages",
+    category: "family",
+    official: false,
+    summary: "Keep everyone calm and entertained when the screens go dark.",
+    why: "A long power cut is easier to cope with if you have something to do. Simple card games need no power, suit all ages and help children feel that things are normal.",
+    lookFor: [
+      "Quick to learn, so all ages can join in",
+      "Small enough to pack in a grab bag",
+      "A pack of ordinary playing cards is a good back-up",
+    ],
+    qty: () => "1 or 2 games per household",
+    query: "family card games",
+    asin: "B0031QBHMA", // Asmodee Dobble family card game
+    buyLabel: "Dobble on Amazon UK",
+    extraBuys: [
+      { label: "UNO on Amazon UK", asin: "B0D9R9WBQT" }, // Mattel UNO with 2 add-on packs, in a tin
+    ],
+  },
+  {
     id: "blanket",
     name: "Foil emergency blankets",
     category: "car",
@@ -521,6 +628,10 @@ const PRODUCTS = [
     qty: () => "1 per car",
     query: "winter car emergency kit jump leads shovel",
     asin: "B00F88TYME", // AA Emergency Winter Car Kit AA5281
+    buyLabel: "Winter car kit on Amazon UK",
+    extraBuys: [
+      { label: "Jump starter on Amazon UK", asin: "B0FB2L7CCX" }, // AstroAI B8 jump starter, up to 7.0L petrol / 5.5L diesel
+    ],
   },
   {
     id: "smoke",
@@ -601,6 +712,22 @@ const PRODUCTS = [
     qty: () => "1 × 6-pack per outside door",
     query: "water activated flood barrier bags",
     asin: "B0085S0612", // Quick Dam water-activated flood bags, 6 pack
+  },
+  {
+    id: "stopcock",
+    name: "Stopcock key",
+    category: "safety",
+    official: false,
+    summary: "Turn off the water at the outside meter if a pipe bursts.",
+    why: "A burst pipe can flood a home in minutes. Your indoor stopcock is usually under the kitchen sink, but if that's stuck or you can't reach it, a stopcock key lets you turn off the supply at the outside meter or boundary box. Find both before you need them.",
+    lookFor: [
+      "A long universal key that reaches deep boundary boxes",
+      "Fits the common UK valve heads",
+      "Keep it somewhere you can reach quickly, not in the loft",
+    ],
+    qty: () => "1 per household",
+    query: "stopcock key universal",
+    asin: "B002SHLR50", // Faithfull universal stopcock key, 114cm
   },
 ];
 
