@@ -8,6 +8,7 @@ const AMAZON_TAG = "readyhomeuk-21";
 const CATEGORIES = [
   { id: "all", label: "Everything" },
   { id: "power", label: "Power cuts" },
+  { id: "comms", label: "Staying in touch" },
   { id: "water", label: "Water & food" },
   { id: "health", label: "First aid & hygiene" },
   { id: "family", label: "Babies & pets" },
@@ -46,7 +47,7 @@ const PRODUCTS = [
   {
     id: "powerbank",
     name: "Portable power bank",
-    category: "power",
+    category: "comms",
     official: true,
     icon: "powerbank",
     tone: "teal",
@@ -68,7 +69,7 @@ const PRODUCTS = [
   {
     id: "radio",
     name: "Wind-up or battery radio",
-    category: "power",
+    category: "comms",
     official: true,
     icon: "radio",
     tone: "violet",
@@ -82,6 +83,30 @@ const PRODUCTS = [
     qty: () => "1 per household",
     query: "wind up solar emergency radio FM DAB",
     asin: "B0FBR82LMV", // ROCAM FM/AM wind-up solar radio
+  },
+  {
+    id: "pmr",
+    name: "PMR446 walkie-talkies",
+    category: "comms",
+    official: false,
+    summary: "Talk to family and neighbours when the mobile networks go down.",
+    why: "In a long power cut, mobile phone masts can lose their backup power within hours. PMR446 radios are licence-free in the UK and let your household or street keep in touch without any network. Range is short, typically a few hundred metres to 1–2 km in towns, and they can't call 999.",
+    lookFor: [
+      "Marked PMR446 and licence-free. Avoid 'Baofeng'-style radios, which need an amateur licence in the UK",
+      "Rechargeable, or running on the AA/AAA batteries you already keep",
+      "Agree a channel in advance and write it in your household plan",
+    ],
+    // Main link is a 2-pack; extra link is a 4-pack.
+    qty: (h) => {
+      const r = Math.max(2, h.adults);
+      return r <= 2 ? "2 radios (1 × 2-pack)" : `${r} radios, one per adult (${Math.ceil(r / 4)} × 4-pack)`;
+    },
+    query: "PMR446 walkie talkie licence free",
+    asin: "B07DYCXZM6", // Motorola Talkabout T42 PMR446, 2 pack
+    buyLabel: "2-pack on Amazon UK",
+    extraBuys: [
+      { label: "4-pack on Amazon UK", asin: "B0GJSKDKKN" }, // eSynic PMR446 rechargeable, 4 pack
+    ],
   },
   {
     id: "batteries",
@@ -355,6 +380,26 @@ const PRODUCTS = [
     asin: "B07JYXQMHV", // G4Free 35L waterproof backpack
   },
   {
+    id: "whistle",
+    name: "Emergency whistle",
+    category: "car",
+    official: false,
+    summary: "Signal for help if you're trapped or separated. Louder than shouting and needs no power.",
+    why: "A whistle carries much further than your voice and takes little effort, which matters if you're injured or trapped. Keep one in the grab bag and one on each person's keys or coat.",
+    lookFor: [
+      "A pealess design, so it still works when wet",
+      "Bright orange, so it's easy to find in a bag",
+      "A lanyard or clip",
+    ],
+    // Linked product is a 3-pack; babies don't need one.
+    qty: (h) => {
+      const n = h.adults + h.children;
+      return `${plural(n, "whistle", "whistles")}, one per person (${Math.ceil(n / 3)} × 3-pack)`;
+    },
+    query: "emergency whistle pealess",
+    asin: "B096PN4BV5", // SwimCell emergency whistle, orange, 3 pack
+  },
+  {
     id: "wallet",
     name: "Waterproof document wallet",
     category: "car",
@@ -446,7 +491,7 @@ function amazonUrl(product) {
 const SITUATIONS = [
   { photo: "powercut", title: "Power cuts", text: "Light, heat and a charged phone", filter: "power" },
   { photo: "flood", title: "Flooding", text: "A grab bag ready to go", filter: "car" },
-  { photo: "storm", title: "Severe storms", text: "Stay safe and informed", filter: "power" },
+  { photo: "storm", title: "Severe storms", text: "Stay safe and informed", filter: "comms" },
   { photo: "outage", title: "Water outages", text: "Drinking water for 3 days", filter: "water" },
   { photo: "heat", title: "Heatwaves & cold snaps", text: "Protect the most vulnerable", filter: "health" },
   { photo: "cyber", title: "Cyber attacks", text: "When cards and phones go down", filter: "all" },

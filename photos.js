@@ -31,6 +31,8 @@ const PHOTOS = {
   cyber: { src: "https://images.unsplash.com/photo-1595928796398-1d0ac507eed0", by: "Moritz Erken", link: "https://unsplash.com/@moritzerken" },
   family: { src: "https://images.unsplash.com/photo-1761839258568-fd466a93f68b", by: "Land O'Lakes, Inc.", link: "https://unsplash.com/@landolakesinc" },
   camping: { src: "https://images.unsplash.com/photo-1619035226152-81e29823b8d9", by: "Alireza Shojaei", link: "https://unsplash.com/@alirezashojaei" },
+  pmr: { src: "https://images.unsplash.com/photo-1586374579268-e08642454549", by: "Everyday basics", link: "https://unsplash.com/@zanardi" },
+  whistle: { src: "https://images.unsplash.com/photo-1596055746427-d5f61aa5df99", by: "Muhammad Masood", link: "https://unsplash.com/@muhammadbinmasood" },
 };
 
 function photo(key, w = 800, h = 600) {
