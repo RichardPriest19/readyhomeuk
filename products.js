@@ -400,6 +400,10 @@ const PRODUCTS = [
     qty: () => "1 per room with a fuel-burning appliance",
     query: "carbon monoxide alarm BS EN 50291",
     asin: "B0CKWGSX22", // FireAngel FA6813 CO alarm, 10-year
+    buyLabel: "Single alarm on Amazon UK",
+    extraBuys: [
+      { label: "2-pack on Amazon UK", asin: "B0G25YPMDM" }, // BLACK+DECKER CO alarm 2-pack, 10-year sealed battery, EN 50291
+    ],
   },
 ];
 
