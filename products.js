@@ -59,6 +59,10 @@ const PRODUCTS = [
     qty: (h) => `${plural(Math.max(1, Math.ceil(h.adults / 2)), "power bank", "power banks")} of 20,000 mAh`,
     query: "power bank 20000mAh",
     asin: "B07YPS5JC5", // INIU 20000mAh power bank
+    buyLabel: "Single power bank on Amazon UK",
+    extraBuys: [
+      { label: "2-pack (10,000 mAh each) on Amazon UK", asin: "B09JBDSV7F" }, // AsperX 2-pack power bank, 2 x 10000mAh
+    ],
   },
   {
     id: "radio",
@@ -135,6 +139,10 @@ const PRODUCTS = [
     qty: () => "1 per person on regular medication",
     query: "weekly pill organiser travel medicine bag",
     asin: "B0BQJ2XZWF", // AUVON XL weekly pill organiser
+    buyLabel: "Single organiser on Amazon UK",
+    extraBuys: [
+      { label: "2-pack on Amazon UK", asin: "B08C71ZHFN" }, // Large weekly pill box organiser, 2 pack
+    ],
   },
   {
     id: "sanitiser",
@@ -228,6 +236,10 @@ const PRODUCTS = [
     qty: (h) => `${plural(people(h) * 3, "day's ration", "days' rations")}`,
     query: "emergency food ration bars 5 year shelf life",
     asin: "B07VNQGPYW", // 72 HRS 3600 kcal ration bar, 5-year shelf life
+    buyLabel: "Single 3-day bar on Amazon UK",
+    extraBuys: [
+      { label: "12-pack (6,840 kcal) on Amazon UK", asin: "B09GLTXDR2" }, // Emergency ration biscuits, 12 pack, 6840 kcal
+    ],
   },
   {
     id: "opener",
