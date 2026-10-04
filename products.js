@@ -738,6 +738,9 @@ function amazonUrl(product) {
   return `https://www.amazon.co.uk/s?k=${encodeURIComponent(product.query)}&tag=${tag}`;
 }
 
+// The 10 items on the UK government's Prepare list, shown first under "Start here".
+const ESSENTIALS = ["water", "food", "opener", "torch", "radio", "powerbank", "batteries", "firstaid", "medication", "sanitiser"];
+
 const SITUATIONS = [
   { photo: "powercut", title: "Power cuts", text: "Light, heat and a charged phone", filter: "power" },
   { photo: "flood", title: "Flooding", text: "Keep water out of your home", filter: "safety" },

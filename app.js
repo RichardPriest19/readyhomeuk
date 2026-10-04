@@ -140,6 +140,38 @@
     if (e.target.matches("[data-have]")) setHave(e.target.dataset.have, e.target.checked);
   });
 
+  // ---- Essentials ------------------------------------------------------------
+  function renderEssentials() {
+    const items = ESSENTIALS.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
+    $("#essentials-list").innerHTML = items
+      .map(
+        (p, i) => `
+        <li class="ess-item ${state.have[p.id] ? "is-have" : ""}">
+          <span class="ess-num">${state.have[p.id] ? "✓" : i + 1}</span>
+          <button type="button" class="ess-open" data-open="${p.id}" aria-label="More about ${p.name}">
+            <img src="${photo(p.id, 160, 160)}" alt="" loading="lazy" width="64" height="64">
+            <span class="ess-text"><span class="ess-name">${p.name}</span><span class="ess-qty">${p.qty(state.household)}</span></span>
+          </button>
+          <span class="ess-actions">
+            <label class="have-toggle"><input type="checkbox" data-have="${p.id}" ${state.have[p.id] ? "checked" : ""}> Got it</label>
+            <button type="button" class="btn btn-primary" data-open="${p.id}">View</button>
+          </span>
+        </li>`
+      )
+      .join("");
+    const done = items.filter((p) => state.have[p.id]).length;
+    $("#ess-progress-bar").style.width = `${(done / items.length) * 100}%`;
+    $("#ess-progress-label").textContent = done === items.length ? "All 10 essentials ready" : `${done} of ${items.length} essentials ready`;
+  }
+
+  $("#essentials-list").addEventListener("click", (e) => {
+    const open = e.target.closest("[data-open]");
+    if (open) openModal(open.dataset.open);
+  });
+  $("#essentials-list").addEventListener("change", (e) => {
+    if (e.target.matches("[data-have]")) setHave(e.target.dataset.have, e.target.checked);
+  });
+
   function setHave(id, value) {
     if (value) state.have[id] = true;
     else delete state.have[id];
@@ -153,6 +185,7 @@
       card.querySelector("[data-have]").checked = value;
     }
     renderProgress();
+    renderEssentials();
   }
 
   function renderProgress() {
@@ -215,6 +248,7 @@
   // ---- Init ------------------------------------------------------------------
   function renderAll() {
     renderSummary();
+    renderEssentials();
     renderGrid();
     renderProgress();
   }
