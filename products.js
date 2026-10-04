@@ -37,6 +37,10 @@ const PRODUCTS = [
     qty: (h) => `${plural(Math.max(1, h.adults), "torch", "torches")}, one per adult`,
     query: "wind up rechargeable LED torch",
     asin: "B00BHY7URE", // Duronic wind-up rechargeable LED lantern/torch
+    buyLabel: "Wind-up torch on Amazon UK",
+    extraBuys: [
+      { label: "Head torch on Amazon UK", asin: "B0D3VDXB19" }, // Blukar rechargeable head torch, 2 pack
+    ],
   },
   {
     id: "powerbank",
