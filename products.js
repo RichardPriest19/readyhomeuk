@@ -34,7 +34,8 @@ const PRODUCTS = [
       "At least 100 lumens for moving around the house",
       "A head torch as well, so your hands are free",
     ],
-    qty: (h) => `${plural(Math.max(1, h.adults), "torch", "torches")}, one per adult`,
+    // Head torch link is a 2-pack.
+    qty: (h) => `${plural(Math.max(1, h.adults), "torch", "torches")}, one per adult, or ${plural(Math.ceil(Math.max(1, h.adults) / 2), "head torch 2-pack", "head torch 2-packs")}`,
     query: "wind up rechargeable LED torch",
     asin: "B00BHY7URE", // Duronic wind-up rechargeable LED lantern/torch
     buyLabel: "Wind-up torch on Amazon UK",
@@ -158,9 +159,18 @@ const PRODUCTS = [
       "Large packs of unscented wet wipes",
       "Bin bags for waste if collections stop",
     ],
-    qty: (h) => `${plural(Math.max(1, Math.ceil(people(h) / 2)), "bottle", "bottles")} of sanitiser and ${plural(Math.max(2, people(h)), "pack", "packs")} of wipes`,
+    // Sanitiser link is 4 bottles; wipes link is a box of 18 packs.
+    qty: (h) => {
+      const bottles = Math.max(1, Math.ceil(people(h) / 2));
+      const wipes = Math.max(2, people(h));
+      return `${plural(bottles, "bottle", "bottles")} of sanitiser (${plural(Math.ceil(bottles / 4), "pack", "packs")} of 4) and ${wipes} packs of wipes (${plural(Math.ceil(wipes / 18), "box", "boxes")} of 18)`;
+    },
     query: "hand sanitiser 60% alcohol and wet wipes bulk",
     asin: "B08DV6R7J3", // 4 x 500ml hand sanitiser gel, 70% alcohol
+    buyLabel: "Hand sanitiser on Amazon UK",
+    extraBuys: [
+      { label: "Wet wipes on Amazon UK", asin: "B0FFTNGFM9" }, // Huggies Pure fragrance-free wipes, 18 packs
+    ],
   },
   {
     id: "water",
@@ -198,7 +208,11 @@ const PRODUCTS = [
       "Collapsible designs save space when empty",
       "10 to 20 litres is as much as most people can lift",
     ],
-    qty: (h) => `${plural(Math.max(1, Math.ceil(people(h) / 2)), "container", "containers")} of 10–20 litres`,
+    // Linked product is a 2-pack.
+    qty: (h) => {
+      const n = Math.max(1, Math.ceil(people(h) / 2));
+      return `${plural(n, "container", "containers")} of 10–20 litres (${Math.ceil(n / 2)} × 2-pack)`;
+    },
     query: "collapsible water container with tap food grade 20 litre",
     asin: "B08JHJB4KB", // Cedilis 20L collapsible water container with tap, 2 pack
   },
