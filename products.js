@@ -36,7 +36,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(1, h.adults), "torch", "torches")}, one per adult`,
     query: "wind up rechargeable LED torch",
-    asin: null,
+    asin: "B00BHY7URE", // Duronic wind-up rechargeable LED lantern/torch
   },
   {
     id: "powerbank",
@@ -54,7 +54,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(1, Math.ceil(h.adults / 2)), "power bank", "power banks")} of 20,000 mAh`,
     query: "power bank 20000mAh",
-    asin: null,
+    asin: "B07YPS5JC5", // INIU 20000mAh power bank
   },
   {
     id: "radio",
@@ -90,7 +90,7 @@ const PRODUCTS = [
     ],
     qty: () => "A multipack of AA and AAA",
     query: "AA AAA alkaline batteries multipack long life",
-    asin: null,
+    asin: "B093C9B1HK", // Duracell Plus AA, 24 pack
   },
   {
     id: "firstaid",
@@ -108,7 +108,7 @@ const PRODUCTS = [
     ],
     qty: (h) => (people(h) > 4 ? "1 large kit (family size)" : "1 home kit"),
     query: "first aid kit home BS 8599",
-    asin: null,
+    asin: "B013T35V80", // Safety First Aid Group BS 8599 kit, medium
   },
   {
     id: "medication",
@@ -126,7 +126,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per person on regular medication",
     query: "weekly pill organiser travel medicine bag",
-    asin: null,
+    asin: "B0BQJ2XZWF", // AUVON XL weekly pill organiser
   },
   {
     id: "sanitiser",
@@ -144,7 +144,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(1, Math.ceil(people(h) / 2)), "bottle", "bottles")} of sanitiser and ${plural(Math.max(2, people(h)), "pack", "packs")} of wipes`,
     query: "hand sanitiser 60% alcohol and wet wipes bulk",
-    asin: null,
+    asin: "B08DV6R7J3", // 4 x 500ml hand sanitiser gel, 70% alcohol
   },
   {
     id: "water",
@@ -165,7 +165,7 @@ const PRODUCTS = [
       return `${p * 9} litres minimum, ${p * 30} litres ideal (3 days)`;
     },
     query: "still bottled water multipack 2 litre",
-    asin: null,
+    asin: "B0HGT12S3T", // Volvic still water, 6 x 1.5L
   },
   {
     id: "jerrycan",
@@ -183,7 +183,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(1, Math.ceil(people(h) / 2)), "container", "containers")} of 10–20 litres`,
     query: "collapsible water container with tap food grade 20 litre",
-    asin: null,
+    asin: "B08JHJB4KB", // Cedilis 20L collapsible water container with tap, 2 pack
   },
   {
     id: "food",
@@ -219,7 +219,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(people(h) * 3, "day's ration", "days' rations")}`,
     query: "emergency food ration bars 5 year shelf life",
-    asin: null,
+    asin: "B07VNQGPYW", // 72 HRS 3600 kcal ration bar, 5-year shelf life
   },
   {
     id: "opener",
@@ -237,7 +237,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "manual tin opener stainless steel",
-    asin: null,
+    asin: "B00004OCJW", // OXO Good Grips tin opener
   },
   {
     id: "baby",
@@ -293,7 +293,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(2, people(h)), "blanket", "blankets")}`,
     query: "foil emergency thermal blanket pack",
-    asin: null,
+    asin: "B0CR651FQS", // Emergency foil blankets, pack of 15
   },
   {
     id: "grabbag",
@@ -311,7 +311,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "waterproof rucksack 35 litre",
-    asin: null,
+    asin: "B07JYXQMHV", // G4Free 35L waterproof backpack
   },
   {
     id: "wallet",
@@ -329,7 +329,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "waterproof document wallet A4 zip",
-    asin: null,
+    asin: "B07KFBGW9V", // A4 zip wallets, 5 pack
   },
   {
     id: "car",
@@ -347,7 +347,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per car",
     query: "winter car emergency kit jump leads shovel",
-    asin: null,
+    asin: "B00F88TYME", // AA Emergency Winter Car Kit AA5281
   },
   {
     id: "smoke",
@@ -365,7 +365,7 @@ const PRODUCTS = [
     ],
     qty: () => "At least 1 per floor",
     query: "smoke alarm 10 year sealed battery",
-    asin: null,
+    asin: "B07CWV3PRS", // X-Sense SD11 smoke alarm, 10-year sealed battery
   },
   {
     id: "co",
@@ -383,7 +383,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per room with a fuel-burning appliance",
     query: "carbon monoxide alarm BS EN 50291",
-    asin: null,
+    asin: "B0CKWGSX22", // FireAngel FA6813 CO alarm, 10-year
   },
 ];
 
