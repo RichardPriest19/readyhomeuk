@@ -178,7 +178,8 @@ const PRODUCTS = [
     ],
     qty: (h) => {
       const p = people(h);
-      return `${p * 9} litres minimum, ${p * 30} litres ideal (3 days)`;
+      // Linked pack is 6 x 1.5L = 9 litres.
+      return `${p * 9}–${p * 30} litres for 3 days: ${p}–${Math.ceil((p * 30) / 9)} packs of 6 × 1.5L`;
     },
     query: "still bottled water multipack 2 litre",
     asin: "B0HGT12S3T", // Volvic still water, 6 x 1.5L
@@ -215,7 +216,8 @@ const PRODUCTS = [
       "Ready-to-eat pouches, oat bars, nuts and dried fruit",
       "Food your household actually likes, so you can rotate it into normal meals",
     ],
-    qty: (h) => `${people(h) * 9} meals for 3 days, plus snacks`,
+    // Linked pack is 12 tins; count one tin per meal.
+    qty: (h) => `${people(h) * 9} meals for 3 days: ${plural(Math.ceil((people(h) * 9) / 12), "pack", "packs")} of 12 tins, plus snacks`,
     query: "ring pull tinned food ready to eat",
     asin: "B09P4L33SW", // Heinz Baked Beans, 12 x 415g
   },
@@ -233,7 +235,8 @@ const PRODUCTS = [
       "Around 2,400 calories per person per day",
       "Individually wrapped portions",
     ],
-    qty: (h) => `${plural(people(h) * 3, "day's ration", "days' rations")}`,
+    // One 3-day bar per person; the 12-pack has 6,840 kcal, about 1.9 bars' worth.
+    qty: (h) => `${people(h)} × 3-day bar, or ${Math.ceil((people(h) * 3600) / 6840)} × 12-pack`,
     query: "emergency food ration bars 5 year shelf life",
     asin: "B07VNQGPYW", // 72 HRS 3600 kcal ration bar, 5-year shelf life
     buyLabel: "Single 3-day bar on Amazon UK",
