@@ -378,6 +378,10 @@ const PRODUCTS = [
     qty: () => "At least 1 per floor",
     query: "smoke alarm 10 year sealed battery",
     asin: "B07CWV3PRS", // X-Sense SD11 smoke alarm, 10-year sealed battery
+    buyLabel: "Single alarm on Amazon UK",
+    extraBuys: [
+      { label: "2-pack on Amazon UK", asin: "B0DPHPYGCW" }, // X-Sense SD11 smoke alarm, 2 pack
+    ],
   },
   {
     id: "co",
