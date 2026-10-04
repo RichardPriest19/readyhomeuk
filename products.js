@@ -91,6 +91,10 @@ const PRODUCTS = [
     qty: () => "A multipack of AA and AAA",
     query: "AA AAA alkaline batteries multipack long life",
     asin: "B093C9B1HK", // Duracell Plus AA, 24 pack
+    buyLabel: "AA batteries on Amazon UK",
+    extraBuys: [
+      { label: "AAA batteries on Amazon UK", asin: "B094YMYM5G" }, // Duracell Plus AAA, 24 pack
+    ],
   },
   {
     id: "firstaid",
