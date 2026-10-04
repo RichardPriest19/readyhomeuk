@@ -201,7 +201,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${people(h) * 9} meals for 3 days, plus snacks`,
     query: "ring pull tinned food ready to eat",
-    asin: null,
+    asin: "B09P4L33SW", // Heinz Baked Beans, 12 x 415g
   },
   {
     id: "rations",
@@ -274,7 +274,7 @@ const PRODUCTS = [
     ],
     qty: (h) => (h.pets ? `3 days of food for ${plural(h.pets, "pet", "pets")}` : "Only if you have pets"),
     query: "pet food pouches multipack long life",
-    asin: null,
+    asin: "B08BL81STZ", // Winalot Meaty Chunks dog food, 40 x 100g pouches
     showWhen: (h) => h.pets > 0,
   },
   {
