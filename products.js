@@ -275,6 +275,10 @@ const PRODUCTS = [
     qty: (h) => (h.pets ? `3 days of food for ${plural(h.pets, "pet", "pets")}` : "Only if you have pets"),
     query: "pet food pouches multipack long life",
     asin: "B08BL81STZ", // Winalot Meaty Chunks dog food, 40 x 100g pouches
+    buyLabel: "Dog food on Amazon UK",
+    extraBuys: [
+      { label: "Cat food on Amazon UK", asin: "B0CY5LF8DW" }, // FELIX Original Mixed Selection in Jelly, 40 x 85g
+    ],
     showWhen: (h) => h.pets > 0,
   },
   {

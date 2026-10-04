@@ -224,6 +224,7 @@ img { display: block; max-width: 100%; }
 .modal-qty span { display: block; font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .modal-qty strong { font-size: 16px; }
 .modal-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 26px; }
+.modal-extra-buys { display: contents; }
 .modal-note { font-size: 12px !important; color: var(--muted) !important; margin: 12px 0 0; }
 .modal-close {
   position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%;

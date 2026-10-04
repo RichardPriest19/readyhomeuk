@@ -183,6 +183,10 @@
     const url = amazonUrl(p);
     buy.hidden = !url;
     if (url) buy.href = url;
+    buy.textContent = p.buyLabel || "View on Amazon UK";
+    $("#modal-extra-buys").innerHTML = (p.extraBuys || [])
+      .map((b) => `<a class="btn btn-amazon" href="${amazonUrl({ asin: b.asin })}" target="_blank" rel="sponsored noopener nofollow">${b.label}</a>`)
+      .join("");
     $("#modal-note").textContent = url ? AFFILIATE_NOTE : p.noBuy;
     $("#modal-have").checked = !!state.have[p.id];
     if (typeof modal.showModal === "function") modal.showModal();
