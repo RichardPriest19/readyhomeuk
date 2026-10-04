@@ -245,6 +245,17 @@
     [...people].map(([by, link]) => `<a href="${link}" target="_blank" rel="noopener">${by}</a>`).join(", ") +
     ". Product photos are illustrative.";
 
+  // ---- Back to top -----------------------------------------------------------
+  const toTop = $("#to-top");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const updateToTop = () => toTop.classList.toggle("show", window.scrollY > 600);
+  window.addEventListener("scroll", updateToTop, { passive: true });
+  toTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+    $(".brand").focus({ preventScroll: true });
+  });
+  updateToTop();
+
   // ---- Init ------------------------------------------------------------------
   function renderAll() {
     renderSummary();
