@@ -248,6 +248,23 @@ const PRODUCTS = [
     ],
   },
   {
+    id: "toilet",
+    name: "Emergency toilet liners",
+    category: "health",
+    official: false,
+    summary: "When the water is off, toilets can't flush. Liners turn your own toilet into a sealed, hygienic one.",
+    why: "If the mains water is cut off, you can usually flush only once with the water left in the cistern. Disposable liners with absorbent pads fit over your own toilet bowl and seal waste in a bag, so you don't waste drinking water on flushing. Tie up used liners and store them outside until bin collections resume.",
+    lookFor: [
+      "Liners with absorbent or gelling pads, which turn waste solid and cut smells",
+      "A universal fit for a standard toilet bowl",
+      "Strong bin bags and somewhere outside to keep used liners",
+    ],
+    // About 2 liners per person per day; linked pack has 20.
+    qty: (h) => `${people(h) * 6} liners for 3 days (${Math.ceil((people(h) * 6) / 20)} × 20-pack)`,
+    query: "emergency toilet liners absorbent",
+    asin: "B0BCJGP6SR", // Lunderg toilet liners with absorbent pads, 20 pack
+  },
+  {
     id: "water",
     name: "Bottled water",
     category: "water",
@@ -290,6 +307,26 @@ const PRODUCTS = [
     },
     query: "collapsible water container with tap food grade 20 litre",
     asin: "B08JHJB4KB", // Cedilis 20L collapsible water container with tap, 2 pack
+  },
+  {
+    id: "watertreat",
+    name: "Water purification tablets and filter",
+    category: "water",
+    official: false,
+    summary: "Make water safe to drink when there's a 'boil water' notice and no power to boil it.",
+    why: "If your water supplier issues a 'boil water' notice during a power cut, you may have no way to boil water. Purification tablets make clear water safe to drink, and a personal filter lets you drink safely on the move. They're a back-up to bottled water, not a replacement for it.",
+    lookFor: [
+      "Tablets that say how many litres each one treats",
+      "A personal filter for each grab bag",
+      "Check the expiry date: tablets usually last about 5 years",
+    ],
+    qty: () => "1 pack of tablets (treats 2,000 litres), and a filter for each grab bag",
+    query: "water purification tablets",
+    asin: "B0BT4YGHYS", // Oasis 67mg purification tablets, 200 (treats 2,000 L)
+    buyLabel: "Purification tablets on Amazon UK",
+    extraBuys: [
+      { label: "LifeStraw filter on Amazon UK", asin: "B07C56LR6N" }, // LifeStraw personal water filter
+    ],
   },
   {
     id: "food",
@@ -528,6 +565,42 @@ const PRODUCTS = [
     extraBuys: [
       { label: "2-pack on Amazon UK", asin: "B0G25YPMDM" }, // BLACK+DECKER CO alarm 2-pack, 10-year sealed battery, EN 50291
     ],
+  },
+  {
+    id: "fire",
+    name: "Fire blanket and extinguisher",
+    category: "safety",
+    official: false,
+    summary: "Put out a small kitchen fire before it spreads.",
+    why: "Fires are more likely during power cuts, when people use candles and heaters. A fire blanket smothers a small pan fire safely. If you also keep an extinguisher, UK fire services recommend foam or water-mist types for homes rather than powder, which is hard to see and breathe through indoors. Only tackle a fire if it's small and you have a clear way out. Otherwise get out, stay out and call 999.",
+    lookFor: [
+      "A fire blanket Kitemarked to BS EN 1869, kept near the kitchen door",
+      "A Kitemarked foam or water-mist extinguisher, not powder",
+      "Never use water on a chip-pan or oil fire",
+    ],
+    qty: () => "1 fire blanket for the kitchen; an extinguisher is optional",
+    query: "fire blanket kitemarked BS EN 1869",
+    asin: "B07R8HZLGL", // Firechief Kitemarked fire blanket 1m x 1m
+    buyLabel: "Fire blanket on Amazon UK",
+    extraBuys: [
+      { label: "Foam extinguisher + blanket on Amazon UK", asin: "B01BSY2TNC" }, // FSS 2L AFFF foam, Kitemarked, with blanket
+    ],
+  },
+  {
+    id: "floodbarrier",
+    name: "Flood barriers",
+    category: "safety",
+    official: false,
+    summary: "Water-activated bags that swell up to block doorways. No sand needed.",
+    why: "Around 1 in 6 properties in England is at risk of flooding. When a flood warning is issued, soaking these bags makes them swell into heavy, sandbag-like barriers within minutes. They're light to store and far easier to handle than traditional sandbags. Sign up for free flood warnings so you have time to put them in place.",
+    lookFor: [
+      "Enough bags to block each outside door, usually two layers high",
+      "Covers for any low airbricks, as water gets in through those too",
+      "Check your long-term flood risk on GOV.UK before you buy",
+    ],
+    qty: () => "1 × 6-pack per outside door",
+    query: "water activated flood barrier bags",
+    asin: "B0085S0612", // Quick Dam water-activated flood bags, 6 pack
   },
 ];
 

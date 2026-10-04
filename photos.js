@@ -36,6 +36,10 @@ const PHOTOS = {
   routerups: { src: "https://images.unsplash.com/photo-1606904825846-647eb07f5be2", by: "Compare Fibre", link: "https://unsplash.com/@comparefibre" },
   solar: { src: "https://images.unsplash.com/photo-1652326320478-38c1e9842e85", by: "Jackery Power Station", link: "https://unsplash.com/@jackery_official" },
   backupphone: { src: "https://images.unsplash.com/photo-1559312379-6eff3ba65888", by: "Isaac Smith", link: "https://unsplash.com/@isaacmsmith" },
+  toilet: { src: "https://images.unsplash.com/photo-1589824783837-6169889fa20f", by: "Giorgio Trovato", link: "https://unsplash.com/@giorgiotrovato" },
+  watertreat: { src: "https://images.unsplash.com/photo-1599490255484-e08a364b4975", by: "Manny Moreno", link: "https://unsplash.com/@mannydream" },
+  fire: { src: "https://images.unsplash.com/photo-1592838754746-4af9f09f526f", by: "Ploegerson", link: "https://unsplash.com/@boombasti" },
+  floodbarrier: { src: "https://images.unsplash.com/photo-1745680636997-dca47973113d", by: "Donna Brown", link: "https://unsplash.com/@ellekay16" },
 };
 
 function photo(key, w = 800, h = 600) {
