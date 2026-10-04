@@ -613,7 +613,7 @@ function amazonUrl(product) {
 
 const SITUATIONS = [
   { photo: "powercut", title: "Power cuts", text: "Light, heat and a charged phone", filter: "power" },
-  { photo: "flood", title: "Flooding", text: "A grab bag ready to go", filter: "car" },
+  { photo: "flood", title: "Flooding", text: "Keep water out of your home", filter: "safety" },
   { photo: "storm", title: "Severe storms", text: "Stay safe and informed", filter: "comms" },
   { photo: "outage", title: "Water outages", text: "Drinking water for 3 days", filter: "water" },
   { photo: "heat", title: "Heatwaves & cold snaps", text: "Protect the most vulnerable", filter: "health" },
