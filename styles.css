@@ -29,6 +29,7 @@ body {
 h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
 a { color: var(--green); }
 img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 
 [data-photo] { background-color: #5c6166; background-size: cover; background-position: center; }
 

@@ -254,8 +254,8 @@ const PRODUCTS = [
       "Check use-by dates and rotate stock monthly",
     ],
     qty: (h) => (h.babies ? `About ${h.babies * 18} bottles (3 days)` : "Only if you have a baby at home"),
-    query: "ready to feed baby formula starter pack",
-    asin: null,
+    // No affiliate link: UK law restricts advertising infant formula.
+    noBuy: "We don't link to infant formula. Your midwife, health visitor or pharmacist can advise which ready-to-feed formula to keep.",
     showWhen: (h) => h.babies > 0,
   },
   {
@@ -388,6 +388,7 @@ const PRODUCTS = [
 ];
 
 function amazonUrl(product) {
+  if (product.noBuy) return null;
   const tag = encodeURIComponent(AMAZON_TAG);
   if (product.asin) return `https://www.amazon.co.uk/dp/${product.asin}?tag=${tag}`;
   return `https://www.amazon.co.uk/s?k=${encodeURIComponent(product.query)}&tag=${tag}`;

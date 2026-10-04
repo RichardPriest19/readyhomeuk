@@ -165,6 +165,7 @@
 
   // ---- Modal -----------------------------------------------------------------
   const modal = $("#modal");
+  const AFFILIATE_NOTE = $("#modal-note").textContent;
   let current = null;
 
   function openModal(id) {
@@ -178,7 +179,11 @@
     $("#modal-qty").innerHTML = `<span>For your household</span><strong>${p.qty(state.household)}</strong>`;
     $("#modal-why").textContent = p.why;
     $("#modal-look").innerHTML = p.lookFor.map((t) => `<li>${t}</li>`).join("");
-    $("#modal-buy").href = amazonUrl(p);
+    const buy = $("#modal-buy");
+    const url = amazonUrl(p);
+    buy.hidden = !url;
+    if (url) buy.href = url;
+    $("#modal-note").textContent = url ? AFFILIATE_NOTE : p.noBuy;
     $("#modal-have").checked = !!state.have[p.id];
     if (typeof modal.showModal === "function") modal.showModal();
     else modal.setAttribute("open", "");
