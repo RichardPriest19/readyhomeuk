@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReadyHome UK — Emergency Kit Checklist</title>
+  <meta name="description" content="Build a household emergency kit the way the UK government recommends. A simple checklist for single people and families, with the items you need.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="promo-bar">
+    <span>Based on UK government emergency guidance</span>
+    <span class="promo-sep" aria-hidden="true">•</span>
+    <span>As an Amazon Associate we earn from qualifying purchases</span>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 15 16 6l11 9v11a1.5 1.5 0 0 1-1.5 1.5h-19A1.5 1.5 0 0 1 5 26z" /><path d="m11.5 18.5 3.2 3.2 6-6.4" /></svg>
+        <span><b>Ready</b>Home UK</span>
+      </a>
+      <nav>
+        <a href="#situations">Situations</a>
+        <a href="#household">Your household</a>
+        <a href="#kit">The kit</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="header-kit" href="#kit" aria-label="Your kit progress">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span id="header-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-photos">
+        <div class="hero-photo hero-photo-a" data-photo="candle"></div>
+        <div class="hero-photo hero-photo-b" data-photo="hero"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-kicker">Emergency kit checklist</p>
+        <h1>Ready for <em>anything</em></h1>
+        <p class="hero-lede">Power cuts, floods and storms. Everything the UK government says your home should have, sized for your household.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#household">Build my kit</a>
+          <a class="btn btn-outline-light" href="#kit">Shop the list</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= USP STRIP ================= -->
+    <section class="usp">
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+        <div><strong>Government checklist</strong><span>From the official Prepare campaign</span></div>
+      </div>
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c0-2.5 1.5-4.5 3-4.5s4 1.5 4 4.5"/></svg>
+        <div><strong>Sized for your family</strong><span>Water, food &amp; supplies for 3 days</span></div>
+      </div>
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+        <div><strong>Delivered by Amazon</strong><span>Order the gaps in minutes</span></div>
+      </div>
+    </section>
+
+    <!-- ================= SITUATIONS ================= -->
+    <section class="section" id="situations">
+      <div class="section-head">
+        <h2>Prepare for every situation</h2>
+        <p>One simple kit covers the emergencies the UK is most likely to face.</p>
+      </div>
+      <div class="tiles" id="tiles"></div>
+    </section>
+
+    <!-- ================= HOUSEHOLD ================= -->
+    <section class="section section-tint" id="household">
+      <div class="household-wrap">
+        <div class="household-intro">
+          <h2>Who's in your household?</h2>
+          <p>Tell us who lives with you and we'll work out how much water, food and medication to keep for three days.</p>
+          <div class="household-summary" id="household-summary"></div>
+        </div>
+        <div class="household-grid">
+          <div class="counter" data-key="adults">
+            <span class="counter-label">Adults<small>and over-12s</small></span>
+            <div class="counter-controls">
+              <button type="button" data-step="-1" aria-label="Fewer adults">−</button>
+              <output>1</output>
+              <button type="button" data-step="1" aria-label="More adults">+</button>
+            </div>
+          </div>
+          <div class="counter" data-key="children">
+            <span class="counter-label">Children<small>aged 1 to 12</small></span>
+            <div class="counter-controls">
+              <button type="button" data-step="-1" aria-label="Fewer children">−</button>
+              <output>0</output>
+              <button type="button" data-step="1" aria-label="More children">+</button>
+            </div>
+          </div>
+          <div class="counter" data-key="babies">
+            <span class="counter-label">Babies<small>under 1</small></span>
+            <div class="counter-controls">
+              <button type="button" data-step="-1" aria-label="Fewer babies">−</button>
+              <output>0</output>
+              <button type="button" data-step="1" aria-label="More babies">+</button>
+            </div>
+          </div>
+          <div class="counter" data-key="pets">
+            <span class="counter-label">Pets<small>cats and dogs</small></span>
+            <div class="counter-controls">
+              <button type="button" data-step="-1" aria-label="Fewer pets">−</button>
+              <output>0</output>
+              <button type="button" data-step="1" aria-label="More pets">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KIT ================= -->
+    <section class="section" id="kit">
+      <div class="kit-head">
+        <div class="section-head">
+          <h2>Your emergency kit</h2>
+          <p>Tap any item for the details and a link to buy it on Amazon UK.</p>
+        </div>
+        <div class="kit-progress">
+          <span id="kit-progress-label">0 of 0 ready</span>
+          <div class="progress"><span id="kit-progress-bar"></span></div>
+        </div>
+      </div>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter items"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- ================= LIFESTYLE BANNER ================= -->
+    <section class="banner" data-photo="family">
+      <div class="banner-content">
+        <h2>Prepare together</h2>
+        <p>Put your kit together as a family. Agree where it lives, who checks it and when.</p>
+        <a class="btn btn-light" href="#about">Make a household plan</a>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div>
+          <h2>Where this list comes from</h2>
+          <p>
+            The core items come from the UK government's <a href="https://prepare.campaign.gov.uk/get-prepared-for-emergencies/" target="_blank" rel="noopener">Prepare</a>
+            campaign, which asks households to keep a torch, radio, power bank, spare batteries, first aid kit,
+            hand sanitiser and wipes, bottled water, food that needs no cooking, and enough medication for several days.
+          </p>
+          <p>
+            Water amounts follow the same guidance: <strong>2.5 to 3 litres</strong> per person per day just to drink,
+            or <strong>10 litres</strong> per person per day to cover cooking and washing too.
+          </p>
+          <p class="muted">ReadyHome UK is an independent site. We are not part of, or endorsed by, the UK government.</p>
+        </div>
+        <div class="about-card">
+          <h3>Three things that cost nothing</h3>
+          <ol>
+            <li>Sign up for <a href="https://www.gov.uk/sign-up-for-flood-warnings" target="_blank" rel="noopener">flood warnings</a> and check your <a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener">long-term flood risk</a>.</li>
+            <li>Join your energy and water supplier's <a href="https://www.thepsr.co.uk/" target="_blank" rel="noopener">Priority Services Register</a> if someone at home is vulnerable.</li>
+            <li>Download the government's <a href="https://prepare.campaign.gov.uk/" target="_blank" rel="noopener">household emergency plan</a>, fill it in and keep it with your kit.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span><b>Ready</b>Home UK</span>
+        <p>Helping UK households get ready for emergencies, one item at a time.</p>
+      </div>
+      <div class="footer-text">
+        <p>
+          <strong>Affiliate disclosure:</strong> ReadyHome UK is a participant in the Amazon EU Associates Programme, an affiliate
+          advertising programme designed to provide a means for sites to earn advertising fees by advertising and linking to
+          Amazon.co.uk. If you buy through our links we may earn a small commission, at no extra cost to you.
+        </p>
+        <p>Guidance on this site is general information, not professional advice. In an emergency, call 999.</p>
+        <p class="credits" id="credits"></p>
+        <p>© <span id="year"></span> ReadyHome UK</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <div class="modal-inner">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div class="modal-media"><img id="modal-img" alt=""></div>
+      <div class="modal-body">
+        <p class="modal-cat" id="modal-cat"></p>
+        <h3 id="modal-title"></h3>
+        <p class="modal-lede" id="modal-lede"></p>
+        <div class="modal-qty" id="modal-qty"></div>
+        <h4>Why you need it</h4>
+        <p id="modal-why"></p>
+        <h4>What to look for</h4>
+        <ul id="modal-look"></ul>
+        <div class="modal-actions">
+          <a class="btn btn-amazon" id="modal-buy" href="#" target="_blank" rel="sponsored noopener nofollow">View on Amazon UK</a>
+          <label class="have-toggle"><input type="checkbox" id="modal-have"> I have this</label>
+        </div>
+        <p class="modal-note">Affiliate link. Prices and availability are shown on Amazon. Photo is illustrative.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="photos.js"></script>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
