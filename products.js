@@ -3,7 +3,7 @@
 // Replace AMAZON_TAG with your Amazon Associates tracking ID (ends in -21 for amazon.co.uk).
 // For any product, set `asin` to link straight to a product page instead of a search.
 // ---------------------------------------------------------------------------
-const AMAZON_TAG = "yourtag-21";
+const AMAZON_TAG = "readyhomeuk-21";
 
 const CATEGORIES = [
   { id: "all", label: "Everything" },
