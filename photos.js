@@ -33,6 +33,9 @@ const PHOTOS = {
   camping: { src: "https://images.unsplash.com/photo-1619035226152-81e29823b8d9", by: "Alireza Shojaei", link: "https://unsplash.com/@alirezashojaei" },
   pmr: { src: "https://images.unsplash.com/photo-1586374579268-e08642454549", by: "Everyday basics", link: "https://unsplash.com/@zanardi" },
   whistle: { src: "https://images.unsplash.com/photo-1596055746427-d5f61aa5df99", by: "Muhammad Masood", link: "https://unsplash.com/@muhammadbinmasood" },
+  routerups: { src: "https://images.unsplash.com/photo-1606904825846-647eb07f5be2", by: "Compare Fibre", link: "https://unsplash.com/@comparefibre" },
+  solar: { src: "https://images.unsplash.com/photo-1652326320478-38c1e9842e85", by: "Jackery Power Station", link: "https://unsplash.com/@jackery_official" },
+  backupphone: { src: "https://images.unsplash.com/photo-1559312379-6eff3ba65888", by: "Isaac Smith", link: "https://unsplash.com/@isaacmsmith" },
 };
 
 function photo(key, w = 800, h = 600) {

@@ -57,6 +57,7 @@ const PRODUCTS = [
       "20,000 mAh or more for several phone charges",
       "The right cables for every phone in the house",
       "Keep it topped up: check and recharge every three months",
+      "A car charger lets you charge phones from the car during a power cut",
     ],
     qty: (h) => `${plural(Math.max(1, Math.ceil(h.adults / 2)), "power bank", "power banks")} of 20,000 mAh`,
     query: "power bank 20000mAh",
@@ -64,6 +65,7 @@ const PRODUCTS = [
     buyLabel: "Single power bank on Amazon UK",
     extraBuys: [
       { label: "2-pack (10,000 mAh each) on Amazon UK", asin: "B09JBDSV7F" }, // AsperX 2-pack power bank, 2 x 10000mAh
+      { label: "Car charger on Amazon UK", asin: "B08VJ2VH2J" }, // INIU 60W USB-C + USB-A car charger
     ],
   },
   {
@@ -107,6 +109,54 @@ const PRODUCTS = [
     extraBuys: [
       { label: "4-pack on Amazon UK", asin: "B0GJSKDKKN" }, // eSynic PMR446 rechargeable, 4 pack
     ],
+  },
+  {
+    id: "routerups",
+    name: "Battery backup for your broadband router",
+    category: "comms",
+    official: false,
+    summary: "Keeps your Wi-Fi and home phone working in a power cut.",
+    why: "UK landlines are moving from copper lines to internet calling (Digital Voice), with the switch-over due to finish by early 2027. Once your line has switched, your home phone stops working in a power cut because the router has no power. A small battery backup keeps the router, Wi-Fi and home phone running for several hours. Providers only have to offer one to customers who depend on their landline, for example people with a telecare alarm or no mobile signal.",
+    lookFor: [
+      "Check your router's power socket: most UK broadband hubs take 12V",
+      "Enough capacity for several hours, at least 10,000 mAh",
+      "An old corded phone won't help once your line has switched to Digital Voice",
+    ],
+    qty: () => "1 per household",
+    query: "mini UPS for router 12V",
+    asin: "B0CQR5GMN4", // SKE mini UPS for router, 20000mAh, UK plug
+  },
+  {
+    id: "solar",
+    name: "Foldable solar charger",
+    category: "comms",
+    official: false,
+    summary: "Tops up phones and your power bank when an outage lasts days.",
+    why: "A power bank gives you a few days of charging. A foldable solar panel keeps phones and power banks topped up for as long as there's daylight. Charging is slow on cloudy UK days, so think of it as a top-up rather than your main supply.",
+    lookFor: [
+      "At least 20W; 40W charges noticeably faster in UK light",
+      "USB-C and USB-A outputs",
+      "Folds small enough to store with the rest of your kit",
+    ],
+    qty: () => "1 per household",
+    query: "foldable solar charger USB C",
+    asin: "B09H6GGK55", // FlexSolar 40W foldable solar charger
+  },
+  {
+    id: "backupphone",
+    name: "Basic backup mobile phone",
+    category: "comms",
+    official: false,
+    summary: "Weeks of battery on one charge, for calls and texts when your smartphone is flat.",
+    why: "A simple phone such as a Nokia 105 lasts weeks on standby, far longer than a smartphone. Put a pay-as-you-go SIM in it: in the UK a phone needs a SIM to call 999, but emergency calls then work on any network with signal, even with no credit.",
+    lookFor: [
+      "A 4G model, as older 2G and 3G phones are losing network support",
+      "A cheap pay-as-you-go SIM, topped up occasionally to keep the number active",
+      "Charge it every few months and store it with your kit",
+    ],
+    qty: () => "1 per household",
+    query: "Nokia 105 4G unlocked",
+    asin: "B0DGGXJQH7", // Nokia 105 4G (2023), dual SIM
   },
   {
     id: "batteries",
