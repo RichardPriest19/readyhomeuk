@@ -67,7 +67,7 @@ const PRODUCTS = [
     why: "Local and national radio broadcast emergency updates during power cuts. The government recommends a battery or wind-up radio so you are not relying on mobile data.",
     lookFor: [
       "Hand-crank and solar charging, with batteries as back-up",
-      "FM and DAB if you can, for BBC local radio",
+      "FM/AM is enough for BBC local radio and emergency updates",
       "A built-in torch and USB phone-charging port are useful extras",
     ],
     qty: () => "1 per household",
