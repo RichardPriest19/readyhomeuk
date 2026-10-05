@@ -47,6 +47,10 @@ const PHOTOS = {
   fan: { src: "https://images.unsplash.com/photo-1665298455913-dd43714f5ad1", by: "Zesan H.", link: "https://unsplash.com/@arianzesan" },
   games: { src: "https://images.unsplash.com/photo-1660807304251-9e2012336d19", by: "Yael Hofnung", link: "https://unsplash.com/@yayosh" },
   stopcock: { src: "https://images.unsplash.com/photo-1581375922343-ac6b40caf5e3", by: "Greg Jewett", link: "https://unsplash.com/@jewettg" },
+  doorbarrier: { src: "https://images.unsplash.com/photo-1517586747161-4c74ea9750cf", by: "Ethan Hoover", link: "https://unsplash.com/@ethanchoover" },
+  airbrick: { src: "https://images.unsplash.com/photo-1558931090-355f54f3b154", by: "H&CO", link: "https://unsplash.com/@hngstrm" },
+  toiletbung: { src: "https://images.unsplash.com/photo-1676210134050-6f12c6898395", by: "Timur Shakerzianov", link: "https://unsplash.com/@shaker_jpg" },
+  dehumidifier: { src: "https://images.unsplash.com/photo-1730299789489-b55bf96b22bf", by: "Mat\u00fa\u0161 Gocman", link: "https://unsplash.com/@matgocman" },
 };
 
 function photo(key, w = 800, h = 600) {

@@ -13,6 +13,7 @@ const CATEGORIES = [
   { id: "health", label: "First aid & hygiene" },
   { id: "family", label: "Family & pets" },
   { id: "safety", label: "Home safety" },
+  { id: "flood", label: "Flooding" },
   { id: "car", label: "Car & grab bag" },
 ];
 
@@ -700,7 +701,7 @@ const PRODUCTS = [
   {
     id: "floodbarrier",
     name: "Flood barriers",
-    category: "safety",
+    category: "flood",
     official: false,
     summary: "Water-activated bags that swell up to block doorways. No sand needed.",
     why: "Around 1 in 6 properties in England is at risk of flooding. When a flood warning is issued, soaking these bags makes them swell into heavy, sandbag-like barriers within minutes. They're light to store and far easier to handle than traditional sandbags. Sign up for free flood warnings so you have time to put them in place.",
@@ -709,9 +710,81 @@ const PRODUCTS = [
       "Covers for any low airbricks, as water gets in through those too",
       "Check your long-term flood risk on GOV.UK before you buy",
     ],
-    qty: () => "1 × 6-pack per outside door",
+    qty: () => "1 × 6-pack per outside door, or a doorway barrier instead",
     query: "water activated flood barrier bags",
     asin: "B0085S0612", // Quick Dam water-activated flood bags, 6 pack
+  },
+  {
+    id: "doorbarrier",
+    name: "Doorway flood barrier",
+    category: "flood",
+    official: false,
+    summary: "A long barrier that swells to seal the bottom of a doorway or garage door.",
+    why: "Most floodwater gets in at ground level through doors. This 5-foot water-activated barrier lies across a doorway and swells within minutes of getting wet, sealing better than a row of loose bags. For homes at high risk, a rigid flood board fitted to the door frame gives the best protection, and councils sometimes offer grants towards one after a flood.",
+    lookFor: [
+      "Long enough to cover the whole doorway, with overlap at each side",
+      "Lay it outside the door, tight against the frame",
+      "Check your long-term flood risk on GOV.UK to decide how much protection you need",
+    ],
+    qty: () => "1 per outside door, or flood bags instead",
+    query: "water activated flood barrier 5ft",
+    asin: "B01HEVBFAQ", // Quick Dam QD65-1 water-activated barrier, 5ft
+    buyLabel: "Single barrier on Amazon UK",
+    extraBuys: [
+      { label: "2-pack on Amazon UK", asin: "B0085S19D6" }, // Quick Dam QD65-2 water-activated barrier, 5ft, 2 pack
+    ],
+  },
+  {
+    id: "airbrick",
+    name: "Airbrick flood covers",
+    category: "flood",
+    official: false,
+    summary: "Seal the airbricks that let floodwater straight under your floors.",
+    why: "Airbricks ventilate the space under your floors, but in a flood they let water pour in, often below the height of your door barriers. Flood covers go over each airbrick when a flood warning is issued, and come off again afterwards so your home can breathe.",
+    lookFor: [
+      "Tested to the PAS 1188 flood protection standard",
+      "Measure your airbricks first: the common size is 9 × 3 inches (225 × 75mm)",
+      "Take the covers off once the flood has passed, so damp doesn't build up",
+    ],
+    qty: () => "1 cover per low airbrick",
+    query: "airbrick flood cover",
+    asin: "B0GGJJ7RWN", // Air brick flood cover patches, BSI tested to PAS 1188, 2 pack
+    buyLabel: "Adhesive patches (2-pack) on Amazon UK",
+    extraBuys: [
+      { label: "Framed cover on Amazon UK", asin: "B00NAT5K3U" }, // Airbrick flood defence cover with buff frame, 9 x 3 inch
+    ],
+  },
+  {
+    id: "toiletbung",
+    name: "Toilet flood bung",
+    category: "flood",
+    official: false,
+    summary: "Stop sewage being forced back up through your toilet in a flood.",
+    why: "When drains are overwhelmed, floodwater and sewage can be pushed back up through ground-floor toilets. An inflatable bung sits in the toilet's U-bend and is pumped up to seal it until the water goes down.",
+    lookFor: [
+      "Sized for a standard UK 110mm soil pipe",
+      "Comes with its own pump and a long hose",
+      "Don't flush while it's fitted, and remove it once the flood has passed",
+    ],
+    qty: () => "1 per ground-floor toilet",
+    query: "inflatable toilet flood bung 110mm",
+    asin: "B09RQXCFVP", // Toiee 110mm inflatable drain plug with pump
+  },
+  {
+    id: "dehumidifier",
+    name: "Dehumidifier",
+    category: "flood",
+    official: false,
+    summary: "Dry your home out after a flood and stop mould taking hold.",
+    why: "After a flood, walls and floors can take weeks or months to dry out. A dehumidifier pulls moisture out of the air and helps prevent mould, which damages both your health and your home. It's useful all year round for damp and drying laundry too.",
+    lookFor: [
+      "20 litres a day or more for drying out a home",
+      "A continuous drain hose, so you don't have to keep emptying the tank",
+      "After a flood, have an electrician check your electrics before plugging anything in",
+    ],
+    qty: () => "1 per household",
+    query: "dehumidifier 20L",
+    asin: "B0C62J7S74", // Pro Breeze 20L/day compressor dehumidifier, Which? Best Buy
   },
   {
     id: "stopcock",
@@ -743,7 +816,7 @@ const ESSENTIALS = ["water", "food", "opener", "torch", "radio", "powerbank", "b
 
 const SITUATIONS = [
   { photo: "powercut", title: "Power cuts", text: "Light, heat and a charged phone", filter: "power" },
-  { photo: "flood", title: "Flooding", text: "Keep water out of your home", filter: "safety" },
+  { photo: "flood", title: "Flooding", text: "Keep water out of your home", filter: "flood" },
   { photo: "storm", title: "Severe storms", text: "Stay safe and informed", filter: "comms" },
   { photo: "outage", title: "Water outages", text: "Drinking water for 3 days", filter: "water" },
   { photo: "heat", title: "Heatwaves & cold snaps", text: "Protect the most vulnerable", filter: "health" },
