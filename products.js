@@ -82,6 +82,49 @@ const PRODUCTS = [
     ],
   },
   {
+    id: "powerstation",
+    name: "Portable power station",
+    category: "power",
+    official: false,
+    summary: "A big rechargeable battery with UK plug sockets. Keeps phones, lights and Wi-Fi going for a day or two.",
+    why: "A portable power station is like a giant power bank with normal three-pin sockets. A 250–500Wh model can run your broadband router for a day or more, recharge every phone in the house many times, and power lamps and a laptop. Unlike a petrol generator it gives off no fumes, so it's safe to use indoors.",
+    lookFor: [
+      "Capacity in watt-hours (Wh): 250–500Wh covers phones, lights and Wi-Fi",
+      "LiFePO4 (LFP) batteries last for thousands of charges",
+      "Top it up every 3 months so it's full when you need it",
+    ],
+    qty: () => "1 per household",
+    query: "portable power station",
+    asin: "B0CYPKY7NQ", // Jackery Explorer 240 v2
+    buyLabel: "Jackery Explorer 240 v2 on Amazon UK",
+    extraBuys: [
+      { label: "EcoFlow RIVER 3 (245Wh) on Amazon UK", asin: "B0DFVZ5D7Z" }, // EcoFlow RIVER 3, 245Wh LFP
+      { label: "EcoFlow RIVER 2 Max (512Wh) on Amazon UK", asin: "B0BFQB86ZL" }, // EcoFlow RIVER 2 Max, 512Wh LiFePO4
+    ],
+  },
+  {
+    id: "homebackup",
+    name: "Home backup power station",
+    category: "power",
+    official: false,
+    summary: "Around 1–2kWh of stored power: enough to keep a fridge or medical equipment running through a long power cut.",
+    why: "A larger power station stores enough energy for essential appliances. As a rough guide, 1,000Wh can keep a fridge-freezer going for most of a day, or run a CPAP machine for several nights. Many switch over within milliseconds when the power fails, so they can protect the router or medical equipment automatically. Pair one with a solar panel to recharge it during a long outage.",
+    lookFor: [
+      "1,000Wh or more for a fridge; check the wattage of anything you need to run",
+      "UPS or pass-through mode, to switch over automatically when the power fails",
+      "If someone at home relies on powered medical equipment, also join the Priority Services Register",
+    ],
+    qty: () => "1 per household, if you need to run a fridge or medical equipment",
+    query: "home backup power station 1000Wh",
+    asin: "B0DB1T34X5", // Jackery Explorer 1000 v2, 1070Wh LiFePO4
+    buyLabel: "Jackery Explorer 1000 v2 (1,070Wh) on Amazon UK",
+    extraBuys: [
+      { label: "Anker SOLIX C1000 Gen 2 (1,024Wh) on Amazon UK", asin: "B0FN7MSY4L" }, // Anker SOLIX C1000 Gen 2, 1024Wh
+      { label: "EcoFlow DELTA 3 Plus (1,024Wh) on Amazon UK", asin: "B0DFPW2Y2C" }, // EcoFlow DELTA 3 Plus, 1024Wh LiFePO4
+      { label: "BLUETTI Elite 200 V2 (2,073Wh) on Amazon UK", asin: "B0DRFZ8C31" }, // BLUETTI Elite 200 V2, 2073.6Wh LFP
+    ],
+  },
+  {
     id: "powerbank",
     name: "Portable power bank",
     category: "comms",

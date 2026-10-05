@@ -51,6 +51,8 @@ const PHOTOS = {
   airbrick: { src: "https://images.unsplash.com/photo-1558931090-355f54f3b154", by: "H&CO", link: "https://unsplash.com/@hngstrm" },
   toiletbung: { src: "https://images.unsplash.com/photo-1676210134050-6f12c6898395", by: "Timur Shakerzianov", link: "https://unsplash.com/@shaker_jpg" },
   dehumidifier: { src: "https://images.unsplash.com/photo-1730299789489-b55bf96b22bf", by: "Mat\u00fa\u0161 Gocman", link: "https://unsplash.com/@matgocman" },
+  powerstation: { src: "https://images.unsplash.com/photo-1678775882799-2fba7042e7da", by: "Zendure Power Station", link: "https://unsplash.com/@zendure" },
+  homebackup: { src: "https://images.unsplash.com/photo-1650785652040-5a2fc88ce902", by: "Jackery Power Station", link: "https://unsplash.com/@jackery_official" },
 };
 
 function photo(key, w = 800, h = 600) {
