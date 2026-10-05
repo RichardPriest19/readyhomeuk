@@ -53,6 +53,7 @@ const PHOTOS = {
   dehumidifier: { src: "https://images.unsplash.com/photo-1730299789489-b55bf96b22bf", by: "Mat\u00fa\u0161 Gocman", link: "https://unsplash.com/@matgocman" },
   powerstation: { src: "https://images.unsplash.com/photo-1678775882799-2fba7042e7da", by: "Zendure Power Station", link: "https://unsplash.com/@zendure" },
   homebackup: { src: "https://images.unsplash.com/photo-1650785652040-5a2fc88ce902", by: "Jackery Power Station", link: "https://unsplash.com/@jackery_official" },
+  petcarrier: { src: "https://images.unsplash.com/photo-1661322563051-15248c0568a1", by: "Dex Ezekiel", link: "https://unsplash.com/@dexezekiel" },
 };
 
 function photo(key, w = 800, h = 600) {

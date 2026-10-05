@@ -562,6 +562,28 @@ const PRODUCTS = [
     showWhen: (h) => h.pets > 0,
   },
   {
+    id: "petcarrier",
+    name: "Pet carrier",
+    category: "family",
+    official: false,
+    summary: "A safe way to bring cats and small dogs with you if you have to leave home quickly.",
+    why: "If you're told to evacuate because of flooding or fire, you'll need to take your pets with you, and a frightened animal is hard to hold. A carrier keeps them secure in the car and at a friend's or relative's house. Emergency rest centres often can't take pets, so plan where they could stay.",
+    lookFor: [
+      "Big enough for your pet to stand up and turn around",
+      "A top-opening door makes it easier to get a nervous cat inside",
+      "Label it with your phone number, and keep vaccination records in your document wallet",
+    ],
+    qty: (h) => `${plural(Math.max(1, h.pets), "carrier", "carriers")}, one per cat or small dog`,
+    query: "pet carrier cat small dog",
+    asin: "B00OP6SVJW", // Amazon Basics hard-sided top-load pet carrier, 58cm
+    buyLabel: "Hard carrier on Amazon UK",
+    extraBuys: [
+      { label: "Soft carrier on Amazon UK", asin: "B07MGH27ZS" }, // Morpilot soft top-opening pet carrier
+      { label: "Folding dog crate on Amazon UK", asin: "B0BJL22LH5" }, // CADOCA foldable dog travel crate, XXL
+    ],
+    showWhen: (h) => h.pets > 0,
+  },
+  {
     id: "games",
     name: "Card games for all ages",
     category: "family",
