@@ -86,8 +86,12 @@ img { display: block; max-width: 100%; }
   display: inline-block; margin: 0 0 18px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   border-left: 4px solid var(--yellow); padding-left: 12px;
 }
-.hero h1 { font-size: clamp(46px, 7vw, 92px); font-weight: 800; letter-spacing: -0.025em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3); }
-.hero h1 em { font-style: italic; font-weight: 700; color: var(--yellow); }
+h1.hero-kicker { font-family: Inter, system-ui, sans-serif; line-height: 1.4; }
+.hero-title {
+  margin: 0; font: 800 clamp(46px, 7vw, 92px)/1.1 var(--display); letter-spacing: -0.025em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+}
+.hero-title em { font-style: italic; font-weight: 700; color: var(--yellow); }
 .hero-lede { max-width: 30em; font-size: clamp(17px, 1.6vw, 20px); margin: 18px 0 30px; color: rgba(255, 255, 255, 0.9); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -292,8 +296,77 @@ img { display: block; max-width: 100%; }
 .to-top:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 .to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
+/* ---- Guide tiles (home) ------------------------------------------------ */
+.guide-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.guide-tile {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.guide-tile:hover { border-color: var(--green); transform: translateY(-2px); }
+.guide-tile img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.guide-tile span { padding: 14px 16px 4px; font: 700 18px/1.25 var(--display); }
+.guide-tile small { padding: 0 16px 16px; color: var(--ink-2); font-size: 14px; }
+.footer-guides a { margin-right: 14px; }
+
+/* ---- FAQ ---------------------------------------------------------------- */
+.faq-wrap { max-width: 860px; margin: 0 auto; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 16px 48px 16px 18px; position: relative;
+  font-weight: 600; font-size: 16.5px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  font: 400 24px/1 Inter, sans-serif; color: var(--green);
+}
+.faq details[open] summary::after { content: "−"; }
+.faq summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; border-radius: var(--radius); }
+.faq .faq-a { padding: 0 18px 16px; color: var(--ink-2); }
+.faq .faq-a p { margin: 0 0 8px; }
+
+/* ---- Guide pages -------------------------------------------------------- */
+.guide-hero { position: relative; color: #fff; min-height: 340px; display: flex; align-items: flex-end; }
+.guide-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,25,.35), rgba(20,22,25,.85)); }
+.guide-hero-inner { position: relative; max-width: 860px; width: 100%; margin: 0 auto; padding: 48px var(--gutter) 40px; }
+.breadcrumb { font-size: 14px; margin: 0 0 14px; color: rgba(255,255,255,.85); }
+.breadcrumb a { color: #fff; }
+.guide-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; }
+.guide-hero .updated { margin: 12px 0 0; font-size: 14px; color: rgba(255,255,255,.8); }
+.guide-main { max-width: 860px; margin: 0 auto; padding: 40px var(--gutter) 64px; }
+.prose { font-size: 17px; color: var(--ink-2); }
+.prose h2 { color: var(--ink); font-size: clamp(24px, 3vw, 32px); margin: 40px 0 12px; }
+.prose a { color: var(--green); }
+.guide-table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 15px; }
+.guide-table th, .guide-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.guide-table th { background: var(--tint); color: var(--ink); }
+.guide-items { list-style: none; padding: 0; margin: 24px 0 0; counter-reset: gi; }
+.guide-item {
+  display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--line);
+}
+.guide-item img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); background: var(--tint); }
+.guide-item h3 { font-size: 22px; margin: 0 0 6px; color: var(--ink); }
+.guide-item h3::before { counter-increment: gi; content: counter(gi) ". "; color: var(--muted); }
+.guide-item .gi-summary { margin: 0 0 10px; color: var(--ink); font-weight: 500; }
+.guide-item .gi-amounts { margin: 0 0 10px; padding: 10px 14px; background: var(--tint); border-left: 4px solid var(--yellow); border-radius: 4px; font-size: 15px; }
+.guide-item .gi-amounts strong { color: var(--ink); }
+.guide-item p, .guide-item li { font-size: 15.5px; color: var(--ink-2); }
+.guide-item ul { padding-left: 20px; margin: 6px 0 14px; }
+.gi-buys { display: flex; flex-wrap: wrap; gap: 10px; }
+.gi-buys .btn { padding: 10px 16px; font-size: 14.5px; }
+.gi-note { font-size: 12px !important; color: var(--muted) !important; margin: 8px 0 0; }
+.guide-cta {
+  margin: 40px 0; padding: 28px; border-radius: var(--radius); background: var(--charcoal); color: #fff;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.guide-cta h2 { margin: 0 0 6px; font-size: 24px; color: #fff; }
+.guide-cta p { margin: 0; color: rgba(255,255,255,.8); }
+.related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
 /* ---- Responsive -------------------------------------------------------- */
 @media (max-width: 960px) {
+  .guide-tiles { grid-template-columns: repeat(2, 1fr); }
   .essentials { grid-template-columns: 1fr; }
   .site-header nav { display: none; }
   .header-kit { margin-left: auto; }
@@ -305,6 +378,9 @@ img { display: block; max-width: 100%; }
   .modal { max-height: 92vh; overflow-y: auto; }
 }
 @media (max-width: 640px) {
+  .guide-tiles, .related { grid-template-columns: 1fr; }
+  .guide-item { grid-template-columns: 1fr; gap: 14px; }
+  .guide-item img { aspect-ratio: 16 / 10; }
   .to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; }
   .essentials { grid-template-columns: 1fr; }
   .ess-item { grid-template-columns: 24px 1fr; }

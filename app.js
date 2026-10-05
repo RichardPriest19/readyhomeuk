@@ -21,31 +21,19 @@
   }
 
   const $ = (sel) => document.querySelector(sel);
-  const categoryLabel = (id) => (CATEGORIES.find((c) => c.id === id) || {}).label || "";
-  const peopleCount = () => state.household.adults + state.household.children + state.household.babies;
-
-  function visibleProducts() {
-    return PRODUCTS.filter((p) => !p.showWhen || p.showWhen(state.household));
-  }
+  const visibleProducts = () => visibleFor(state.household);
 
   // ---- Background photos (hero, banner) --------------------------------------
+  // The build script pre-sets these; only fill in any that are missing.
   const wide = window.innerWidth > 900 ? 1600 : 900;
   document.querySelectorAll("[data-photo]").forEach((el) => {
-    el.style.backgroundImage = `url("${photo(el.dataset.photo, wide, Math.round(wide * 0.7))}")`;
+    if (!el.style.backgroundImage) {
+      el.style.backgroundImage = `url("${photo(el.dataset.photo, wide, Math.round(wide * 0.7))}")`;
+    }
   });
 
   // ---- Situation tiles -------------------------------------------------------
-  $("#tiles").innerHTML = SITUATIONS.map(
-    (s) => `
-      <button type="button" class="tile" data-filter="${s.filter}">
-        <span class="tile-img" data-photo="${s.photo}" style="background-image:url('${photo(s.photo, 800, 600)}')"></span>
-        <span class="tile-body">
-          <span class="tile-title">${s.title}</span>
-          <span class="tile-text">${s.text}</span>
-          <span class="tile-btn">Shop the kit</span>
-        </span>
-      </button>`
-  ).join("");
+  $("#tiles").innerHTML = SITUATIONS.map(tileHTML).join("");
   $("#tiles").addEventListener("click", (e) => {
     const tile = e.target.closest("[data-filter]");
     if (!tile) return;
@@ -72,22 +60,12 @@
   });
 
   function renderSummary() {
-    const p = peopleCount();
-    $("#household-summary").innerHTML = `
-      <div class="stat"><strong>${p * 9}–${p * 30}L</strong><span>water for 3 days</span></div>
-      <div class="stat"><strong>${p * 9}</strong><span>no-cook meals</span></div>
-      <div class="stat"><strong>${visibleProducts().length}</strong><span>items to get</span></div>
-    `;
+    $("#household-summary").innerHTML = summaryHTML(state.household);
   }
 
   // ---- Filters ---------------------------------------------------------------
   function renderFilters() {
-    $("#filters").innerHTML = CATEGORIES.map(
-      (c) =>
-        `<button type="button" role="tab" class="chip" data-filter="${c.id}" aria-selected="${
-          state.filter === c.id
-        }">${c.label}</button>`
-    ).join("");
+    $("#filters").innerHTML = filtersHTML(state.filter);
   }
   function setFilter(id) {
     state.filter = id;
@@ -103,32 +81,7 @@
   function renderGrid() {
     const items = visibleProducts().filter((p) => state.filter === "all" || p.category === state.filter);
     $("#grid").innerHTML = items.length
-      ? items
-          .map(
-            (p) => `
-        <article class="card ${state.have[p.id] ? "is-have" : ""}" data-id="${p.id}">
-          <button type="button" class="card-open" data-open="${p.id}" aria-label="More about ${p.name}">
-            <div class="card-media">
-              <img src="${photo(p.id, 600, 600)}" alt="" loading="lazy" width="600" height="600">
-              ${p.official ? '<span class="badge">Gov. list</span>' : ""}
-              ${state.have[p.id] ? '<span class="got">✓ Got it</span>' : ""}
-            </div>
-            <div class="card-body">
-              <p class="card-cat">${categoryLabel(p.category)}</p>
-              <h3>${p.name}</h3>
-              <p class="card-summary">${p.summary}</p>
-              <p class="card-qty">${p.qty(state.household)}</p>
-            </div>
-          </button>
-          <div class="card-foot">
-            <label class="have-toggle"><input type="checkbox" data-have="${p.id}" ${
-              state.have[p.id] ? "checked" : ""
-            }> I have this</label>
-            <button type="button" class="btn btn-primary" data-open="${p.id}">View</button>
-          </div>
-        </article>`
-          )
-          .join("")
+      ? items.map((p) => cardHTML(p, state.household, state.have)).join("")
       : `<p class="empty">Nothing in this group for your household. Try “Everything”.</p>`;
   }
 
@@ -143,22 +96,7 @@
   // ---- Essentials ------------------------------------------------------------
   function renderEssentials() {
     const items = ESSENTIALS.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
-    $("#essentials-list").innerHTML = items
-      .map(
-        (p, i) => `
-        <li class="ess-item ${state.have[p.id] ? "is-have" : ""}">
-          <span class="ess-num">${state.have[p.id] ? "✓" : i + 1}</span>
-          <button type="button" class="ess-open" data-open="${p.id}" aria-label="More about ${p.name}">
-            <img src="${photo(p.id, 160, 160)}" alt="" loading="lazy" width="64" height="64">
-            <span class="ess-text"><span class="ess-name">${p.name}</span><span class="ess-qty">${p.qty(state.household)}</span></span>
-          </button>
-          <span class="ess-actions">
-            <label class="have-toggle"><input type="checkbox" data-have="${p.id}" ${state.have[p.id] ? "checked" : ""}> Got it</label>
-            <button type="button" class="btn btn-primary" data-open="${p.id}">View</button>
-          </span>
-        </li>`
-      )
-      .join("");
+    $("#essentials-list").innerHTML = items.map((p, i) => essentialHTML(p, i, state.household, state.have)).join("");
     const done = items.filter((p) => state.have[p.id]).length;
     $("#ess-progress-bar").style.width = `${(done / items.length) * 100}%`;
     $("#ess-progress-label").textContent = done === items.length ? "All 10 essentials ready" : `${done} of ${items.length} essentials ready`;
@@ -206,21 +144,24 @@
     if (!p) return;
     current = p;
     $("#modal-img").src = photo(p.id, 900, 900);
+    $("#modal-img").alt = p.name;
     $("#modal-cat").textContent = categoryLabel(p.category) + (p.official ? " · On the government list" : "");
     $("#modal-title").textContent = p.name;
     $("#modal-lede").textContent = p.summary;
     $("#modal-qty").innerHTML = `<span>For your household</span><strong>${p.qty(state.household)}</strong>`;
     $("#modal-why").textContent = p.why;
     $("#modal-look").innerHTML = p.lookFor.map((t) => `<li>${t}</li>`).join("");
+    const [main, ...extras] = buyLinks(p);
     const buy = $("#modal-buy");
-    const url = amazonUrl(p);
-    buy.hidden = !url;
-    if (url) buy.href = url;
-    buy.textContent = p.buyLabel || "View on Amazon UK";
-    $("#modal-extra-buys").innerHTML = (p.extraBuys || [])
-      .map((b) => `<a class="btn btn-amazon" href="${amazonUrl({ asin: b.asin })}" target="_blank" rel="sponsored noopener nofollow">${b.label}</a>`)
+    buy.hidden = !main;
+    if (main) {
+      buy.href = main.url;
+      buy.textContent = main.label;
+    }
+    $("#modal-extra-buys").innerHTML = extras
+      .map((b) => `<a class="btn btn-amazon" href="${b.url}" target="_blank" rel="sponsored noopener nofollow">${b.label}</a>`)
       .join("");
-    $("#modal-note").textContent = url ? AFFILIATE_NOTE : p.noBuy;
+    $("#modal-note").textContent = main ? AFFILIATE_NOTE : p.noBuy;
     $("#modal-have").checked = !!state.have[p.id];
     if (typeof modal.showModal === "function") modal.showModal();
     else modal.setAttribute("open", "");
@@ -238,12 +179,7 @@
   $("#modal-have").addEventListener("change", (e) => current && setHave(current.id, e.target.checked));
 
   // ---- Photo credits ---------------------------------------------------------
-  const people = new Map();
-  Object.values(PHOTOS).forEach((p) => people.set(p.by, p.link));
-  $("#credits").innerHTML =
-    "Photos on <a href='https://unsplash.com' target='_blank' rel='noopener'>Unsplash</a> by " +
-    [...people].map(([by, link]) => `<a href="${link}" target="_blank" rel="noopener">${by}</a>`).join(", ") +
-    ". Product photos are illustrative.";
+  $("#credits").innerHTML = creditsHTML();
 
   // ---- Back to top -----------------------------------------------------------
   const toTop = $("#to-top");
