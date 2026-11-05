@@ -98,7 +98,7 @@ const PRODUCTS = [
     asin: "B0CYPKY7NQ", // Jackery Explorer 240 v2
     buyLabel: "Jackery Explorer 240 v2 on Amazon UK",
     extraBuys: [
-      { label: "EcoFlow RIVER 3 (245Wh) on Amazon UK", asin: "B0DFVZ5D7Z" }, // EcoFlow RIVER 3, 245Wh LFP
+      { label: "EcoFlow RIVER 3 (245Wh) on Amazon UK", asin: "B0DJY2R42F" }, // EcoFlow RIVER 3 (10 ms UPS), 245Wh LFP
       { label: "EcoFlow RIVER 2 Max (512Wh) on Amazon UK", asin: "B0BFQB86ZL" }, // EcoFlow RIVER 2 Max, 512Wh LiFePO4
     ],
   },
@@ -141,7 +141,7 @@ const PRODUCTS = [
     ],
     qty: (h) => `${plural(Math.max(1, Math.ceil(h.adults / 2)), "power bank", "power banks")} of 20,000 mAh`,
     query: "power bank 20000mAh",
-    asin: "B07YPS5JC5", // INIU 20000mAh power bank
+    asin: "B0CZ9LH53B", // Anker Zolo 20000mAh 30W power bank
     buyLabel: "Single power bank on Amazon UK",
     extraBuys: [
       { label: "2-pack (10,000 mAh each) on Amazon UK", asin: "B09JBDSV7F" }, // AsperX 2-pack power bank, 2 x 10000mAh
@@ -164,7 +164,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "wind up solar emergency radio FM DAB",
-    asin: "B0FBR82LMV", // ROCAM FM/AM wind-up solar radio
+    asin: "B00WIF2T7C", // 2000mAh FM/AM wind-up solar radio with torch
   },
   {
     id: "pmr",
@@ -204,7 +204,7 @@ const PRODUCTS = [
     ],
     qty: () => "1 per household",
     query: "mini UPS for router 12V",
-    asin: "B0CQR5GMN4", // SKE mini UPS for router, 20000mAh, UK plug
+    asin: "B0CNT6LLHP", // SKE mini UPS for router, 10400mAh, 9V/12V DC, UK plug
   },
   {
     id: "solar",
@@ -342,7 +342,7 @@ const PRODUCTS = [
     // About 2 liners per person per day; linked pack has 20.
     qty: (h) => `${people(h) * 6} liners for 3 days (${Math.ceil((people(h) * 6) / 20)} × 20-pack)`,
     query: "emergency toilet liners absorbent",
-    asin: "B0BCJGP6SR", // Lunderg toilet liners with absorbent pads, 20 pack
+    asin: "B08MV5R7QT", // Lunderg toilet liners with absorbent pads, 20 pack
   },
   {
     id: "masks",
@@ -399,7 +399,7 @@ const PRODUCTS = [
       return `${p * 9}–${p * 30} litres for 3 days: ${p}–${Math.ceil((p * 30) / 9)} packs of 6 × 1.5L`;
     },
     query: "still bottled water multipack 2 litre",
-    asin: "B0HGT12S3T", // Volvic still water, 6 x 1.5L
+    asin: "B0896QF9G9", // AQUA Carpatica still water, 6 x 1.5L
   },
   {
     id: "jerrycan",
@@ -415,13 +415,13 @@ const PRODUCTS = [
       "Collapsible designs save space when empty",
       "10 to 20 litres is as much as most people can lift",
     ],
-    // Linked product is a 2-pack.
+    // Linked product is a single 20L container.
     qty: (h) => {
       const n = Math.max(1, Math.ceil(people(h) / 2));
-      return `${plural(n, "container", "containers")} of 10–20 litres (${Math.ceil(n / 2)} × 2-pack)`;
+      return `${plural(n, "container", "containers")} of 10–20 litres`;
     },
     query: "collapsible water container with tap food grade 20 litre",
-    asin: "B08JHJB4KB", // Cedilis 20L collapsible water container with tap, 2 pack
+    asin: "B09F9QTNK8", // FALEIZHI 20L collapsible water container with tap
   },
   {
     id: "watertreat",
@@ -435,9 +435,9 @@ const PRODUCTS = [
       "A personal filter for each grab bag",
       "Check the expiry date: tablets usually last about 5 years",
     ],
-    qty: () => "1 pack of tablets (treats 2,000 litres), and a filter for each grab bag",
+    qty: () => "1 pack of tablets (treats 200 litres), and a filter for each grab bag",
     query: "water purification tablets",
-    asin: "B0BT4YGHYS", // Oasis 67mg purification tablets, 200 (treats 2,000 L)
+    asin: "B0BVG79NN6", // Oasis 8.5mg purification tablets, 200 (1 per litre, treats 200 L)
     buyLabel: "Purification tablets on Amazon UK",
     extraBuys: [
       { label: "LifeStraw filter on Amazon UK", asin: "B07C56LR6N" }, // LifeStraw personal water filter
@@ -492,11 +492,11 @@ const PRODUCTS = [
       "Around 2,400 calories per person per day",
       "Individually wrapped portions",
     ],
-    // One 3-day bar per person; the 12-pack has 6,840 kcal, about 1.9 bars' worth.
-    qty: (h) => `${people(h)} × 3-day bar, or ${Math.ceil((people(h) * 3600) / 6840)} × 12-pack`,
+    // 3,600 kcal per person for 3 days; the 500g pack has 2,425 kcal and the 12-pack 6,840 kcal.
+    qty: (h) => `${Math.ceil((people(h) * 3600) / 2425)} × 500g ration pack, or ${Math.ceil((people(h) * 3600) / 6840)} × 12-pack`,
     query: "emergency food ration bars 5 year shelf life",
-    asin: "B07VNQGPYW", // 72 HRS 3600 kcal ration bar, 5-year shelf life
-    buyLabel: "Single 3-day bar on Amazon UK",
+    asin: "B0HQ72HC6C", // 500g ration pack, 9 bars, 2,425 kcal, 5-year shelf life
+    buyLabel: "500g ration pack (2,425 kcal) on Amazon UK",
     extraBuys: [
       { label: "12-pack (6,840 kcal) on Amazon UK", asin: "B09GLTXDR2" }, // Emergency ration biscuits, 12 pack, 6840 kcal
     ],
